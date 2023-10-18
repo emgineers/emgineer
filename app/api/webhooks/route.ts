@@ -62,7 +62,7 @@ export async function POST(req: Request) {
             eventSignUpId,
             eventSignUps.id
           );
-          const res = db
+          const res = await db
             .update(eventSignUps)
             .set({
               paid: paymentStatus,
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
             .where(eq(eventSignUps.id, eventSignUpId))
             .run();
 
-          console.log("res", res);
+          // console.log("res", res);
 
           break;
         case "payment_intent.payment_failed":
