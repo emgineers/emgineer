@@ -43,7 +43,6 @@ export async function POST(req: Request) {
       switch (event.type) {
         case "checkout.session.completed":
           data = event.data.object;
-          console.log(`💰 CheckoutSession status: ${data.payment_status}`);
           //   const userId = data.client_reference_id;
           const email = data?.customer_details?.email as string;
           //   const customerId = data.customer;
@@ -56,7 +55,11 @@ export async function POST(req: Request) {
             data.payment_intent as string
           );
           const paymentStatus = payment_intent.status === "succeeded";
-          //   console.log(data, paymentStatus);
+          console.log(
+            `💰 CheckoutSession status: ${data.payment_status}`,
+            data,
+            paymentStatus
+          );
           await db
             .update(eventSignUps)
             .set({
