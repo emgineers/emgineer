@@ -1,14 +1,10 @@
 import {
   PageObjectResponse,
-  RichTextPropertyItemObjectResponse,
   DatePropertyItemObjectResponse,
+  RichTextPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
   NumberPropertyItemObjectResponse,
   CheckboxPropertyItemObjectResponse,
-  EmailPropertyItemObjectResponse,
-  SelectPropertyItemObjectResponse,
-  LastEditedByPropertyItemObjectResponse,
-  CreatedTimePropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 export interface NotionOnNextPageObjectResponse extends PageObjectResponse {
@@ -26,22 +22,21 @@ export interface mediaMapInterface {
 
 export type BlogPageObjectResponse = NotionOnNextPageObjectResponse & {
   properties: {
-    Description: RichTextPropertyItemObjectResponse;
     Date: DatePropertyItemObjectResponse;
+    Description: RichTextPropertyItemObjectResponse;
     Name: TitlePropertyItemObjectResponse;
   };
 };
 export type EventsPageObjectResponse = NotionOnNextPageObjectResponse & {
   properties: {
-    Price: NumberPropertyItemObjectResponse;
     "Extra Details": RichTextPropertyItemObjectResponse;
-    Id: RichTextPropertyItemObjectResponse;
-    Description: RichTextPropertyItemObjectResponse;
-    Location: RichTextPropertyItemObjectResponse;
     Date: DatePropertyItemObjectResponse;
-    Hide: CheckboxPropertyItemObjectResponse;
     "Duration (hrs)": NumberPropertyItemObjectResponse;
+    Price: NumberPropertyItemObjectResponse;
     stripePriceId: RichTextPropertyItemObjectResponse;
+    Id: RichTextPropertyItemObjectResponse;
+    Location: RichTextPropertyItemObjectResponse;
+    Hide: CheckboxPropertyItemObjectResponse;
     Name: TitlePropertyItemObjectResponse;
   };
 };

@@ -108,6 +108,9 @@ export const getPages = async (
       sorts: sorts,
     };
   }
+
+  console.log(query);
+
   const response = await notion.databases.query(query);
   return response.results;
 };
