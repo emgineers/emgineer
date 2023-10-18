@@ -40,7 +40,8 @@ CREATE TABLE `user` (
 	`name` text,
 	`email` text NOT NULL,
 	`emailVerified` integer,
-	`image` text
+	`image` text,
+	`stripeId` text DEFAULT ''
 );
 --> statement-breakpoint
 CREATE TABLE `verificationToken` (

@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "fb5adb21-5ac2-43bb-8f67-9d851cb11319",
+  "id": "d93268d3-cf9d-4bf2-a84d-20fd49b7a844",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "account": {
@@ -280,6 +280,14 @@
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
+        },
+        "stripeId": {
+          "name": "stripeId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "''"
         }
       },
       "indexes": {},
