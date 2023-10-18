@@ -58,15 +58,19 @@ export async function POST(req: Request) {
           console.log(
             `💰 CheckoutSession status: ${data.payment_status}`,
             data,
-            paymentStatus
+            paymentStatus,
+            eventSignUpId,
+            eventSignUps.id
           );
-          await db
+          const res = db
             .update(eventSignUps)
             .set({
               paid: paymentStatus,
             })
             .where(eq(eventSignUps.id, eventSignUpId))
             .run();
+
+          console.log("res", res);
 
           break;
         case "payment_intent.payment_failed":
@@ -75,7 +79,7 @@ export async function POST(req: Request) {
           break;
         case "payment_intent.succeeded":
           data = event.data.object as Stripe.PaymentIntent;
-          console.log(`💰 PaymentIntent status: ${data.status}`);
+          // console.log(`💰 PaymentIntent status: ${data.status}`);
           break;
         default:
           throw new Error(`Unhhandled event: ${event.type}`);
