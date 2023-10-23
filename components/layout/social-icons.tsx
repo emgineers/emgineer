@@ -11,7 +11,7 @@ const SocialIcons: FC<SocialIconsProps> = ({}) => {
         variant="ghost"
         className="text-emma-primary"
         size="icon"
-        href="https://facebook.com"
+        href="https://www.facebook.com/profile.php?id=61550886644164"
       >
         <Facebook className="w-5 h-5" />
       </Button>
@@ -19,7 +19,7 @@ const SocialIcons: FC<SocialIconsProps> = ({}) => {
         variant="ghost"
         className="text-emma-primary"
         size="icon"
-        href="https://youtube.com"
+        href="https://instagram.com/emgineer_society"
       >
         <Instagram className="w-5 h-5" />
       </Button>
