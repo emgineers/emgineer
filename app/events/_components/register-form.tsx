@@ -49,6 +49,7 @@ const RegisterForm = ({
     price,
     title,
     duration,
+    stripePriceId,
   },
 }: RegisterFormProps) => {
   const eventSignUpForm = useForm<z.infer<typeof formSchema>>({
@@ -156,6 +157,27 @@ const RegisterForm = ({
         variant: "destructive",
       });
     }
+  }
+
+  if (price && !stripePriceId) {
+    return (
+      <div className="mt-10">
+        <Card className="p-6">
+          <div className="flex flex-col mb-6 space-y-4">
+            <h1 className="text-4xl font-extrabold mb-2  text-emma-primary">
+              Sign Ups Closed
+            </h1>
+          </div>
+          <div className="flex flex-col mb-6 space-y-4">
+            <p>
+              Unfortunately, sign ups for this event are closed. If you would
+              like to change your sign up status, please contact the event
+              organiser.
+            </p>
+          </div>
+        </Card>
+      </div>
+    );
   }
 
   return (
