@@ -30,10 +30,7 @@ export default async function EventIndex() {
             <Suspense
               fallback={<Skeleton className="w-full p-5 mt-4"></Skeleton>}
             >
-              <ClientEventSignUpStatus
-                eventId={page.parsed.eventId}
-                slug={page.parsed.eventId}
-              />
+              <ClientEventSignUpStatus {...page} />
             </Suspense>
           </EventCard>
         ))}

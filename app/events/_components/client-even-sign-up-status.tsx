@@ -5,16 +5,15 @@ import { FC, use, useEffect, useState } from "react";
 import { RouterOutputs, api } from "trpc/client";
 import Login from "./login-in";
 import { Skeleton } from "components/ui/skeleton";
+import { ParsedEventsPageObjectResponse } from "app/get";
 
-interface EventSignUpStatusProps {
-  eventId: string;
-  slug: string;
-}
+interface EventSignUpStatusProps extends ParsedEventsPageObjectResponse {}
 
 const ClientEventSignUpStatus: FC<EventSignUpStatusProps> = ({
-  eventId,
-  slug,
+  parsed: { eventId, price, stripePriceId },
 }) => {
+  const slug = eventId;
+
   const [userSignUpStatus, setUserSignUpStatus] = useState<
     RouterOutputs["events"]["signUpStatus"] | undefined
   >(undefined);
@@ -53,6 +52,14 @@ const ClientEventSignUpStatus: FC<EventSignUpStatusProps> = ({
   }
 
   let buttonClassName = "w-full mt-4 ";
+
+  if (price && !stripePriceId) {
+    return (
+      <Button className="bg-gray-500 hover:bg-gray-600 text-white">
+        Sign Ups Closed
+      </Button>
+    );
+  }
 
   switch (userSignUpStatus.status) {
     case "Going":
