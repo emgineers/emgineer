@@ -19,7 +19,7 @@ interface AdminPageProps {}
 
 const AdminPage: FC<AdminPageProps> = async ({}) => {
   const session = await useAdminOnly();
-  const events = await getParsedEventPages(true);
+  const events = await getParsedEventPages(false);
   const eventIds = events.map((event) => event.parsed.eventId);
   const eventNames = events.map((event) => event.parsed.title);
 
