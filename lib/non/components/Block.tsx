@@ -121,28 +121,38 @@ export const Block = asyncComponent(
         );
       case "image":
         // If Media map does not exist, use the external url or file url from Notion. Be aware that these links expire after 1 hr. https://developers.notion.com/docs/working-with-files-and-media
-        const imageUrl: string =
-          databaseId && pageId && mediaMap
-            ? (mediaMap[databaseId][pageId][block.id] as string)
-            : block.image.type == "external"
-            ? block.image.external.url
-            : block.image.file.url;
-        return (
-          <div className="notion_image_container">
-            <Image
-              src={imageUrl || "/fallback.png"}
-              alt={"Notion page image"} //TODO: Update this alt text
-              width={700}
-              height={700}
-              className="notion_image"
-            />
-            <span className="notion_caption">
-              {block.image.caption && (
-                <RichText rich_text={block.image.caption} />
-              )}
-            </span>
-          </div>
-        );
+        try {
+          const imageUrl: string =
+            databaseId && pageId && mediaMap
+              ? (mediaMap[databaseId][pageId][block.id] as string)
+              : block.image.type == "external"
+              ? block.image.external.url
+              : block.image.file.url;
+
+          return (
+            <div className="notion_image_container">
+              <Image
+                src={imageUrl || "/fallback.png"}
+                alt={"Notion page image"} //TODO: Update this alt text
+                width={700}
+                height={700}
+                className="notion_image"
+              />
+              <span className="notion_caption">
+                {block.image.caption && (
+                  <RichText rich_text={block.image.caption} />
+                )}
+              </span>
+            </div>
+          );
+        } catch (err) {
+          console.error(err);
+
+          return (
+            <div className="notion_image_container">Image URL not found</div>
+          );
+        }
+
       case "video":
         // If Media map does not exist, use the external url or file url from Notion. Be aware that these links expire after 1 hr. https://developers.notion.com/docs/working-with-files-and-media
         const videoUrl: string =
