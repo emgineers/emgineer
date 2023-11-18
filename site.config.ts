@@ -7,7 +7,7 @@ const siteConfig = {
   commmittee: committee as CommitteeMember[],
   fundingUrl: "https://youtu.be/dQw4w9WgXcQ",
   primarySiteUrl: "https://emgineer.vercel.app",
-  admins: ["ls914", "basiltfake", "th621"],
+  admins: ["ls914", "basiltfake", "th621", "jm2455"],
 };
 
 export default siteConfig;
