@@ -16,5 +16,5 @@ export const getUrl = () => {
   // get current site url
   const siteUrl = process.env.VERCEL_URL;
 
-  return `https://${siteUrl}`;
+  return siteConfig.primarySiteUrl;
 };
