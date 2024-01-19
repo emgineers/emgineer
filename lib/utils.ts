@@ -12,5 +12,9 @@ export const getUrl = () => {
   if (env !== "production") {
     return "http://localhost:3000";
   }
-  return siteConfig.primarySiteUrl;
+
+  // get current site url
+  const siteUrl = process.env.VERCEL_URL;
+
+  return `https://${siteUrl}`;
 };
